@@ -1,2 +1,2 @@
-import hEcharts from './echarts';
-export default hEcharts;
+import echarts from './echarts';
+export default echarts;

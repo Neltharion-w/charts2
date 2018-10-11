@@ -1,22 +1,35 @@
 <template>
   <div :class="[skin+'-skin h-100 app-wrap']">
-    <nav class="navbar navbar-expand">
+    <nav class="navbar py-0 navbar-expand-md navbar-dark bg-dark">
       <a href="#" class="navbar-brand">
         <img src="./assets/logo.png" style="height:2rem" class="align-top" alt="logo">
         优秀图表收集
       </a>
-      <div class="navbar-collapse justify-content-end">
-        <nav class="nav justify-content-center">
-          <span class="btn btn-sm btn-outline-primary" @click="tabskin">换肤</span>
-          <span class="btn btn-sm btn-outline-primary ml-2" v-if="$store.state.userInf" @click="toLoginOut">退出</span>
-          <router-link class="btn btn-sm btn-outline-primary ml-2" v-else :to="loginRouter">登录</router-link>
-        </nav>
+      <div class="order-md-1">
+        <button class="btn btn-sm btn-outline-success" @click="tabskin">换肤</button>
+        <button class="btn btn-sm btn-outline-primary ml-1" v-if="$store.state.userInf" @click="toLoginOut">退出</button>
+        <router-link class="btn btn-sm btn-outline-primary ml-1" v-else :to="loginRouter">登录</router-link>
+        <button @click="show=!show" class="navbar-toggler navbar-toggler-icon ml-1" type="button"></button>
+      </div>
+      <div class="collapse navbar-collapse" :class="{show}">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <h-nav-dropdown desc="Dropdown link">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+          </h-nav-dropdown>
+        </ul>
       </div>
     </nav>
-    <h-asider id="asider-nav" :leftLevel="1"></h-asider>
-    <ul class="breadcrumb mb-0 rounded-0 bg-dark text-light">
-      <li v-for="p in $route.matched.slice(1)" :key="p.path" class="breadcrumb-item">{{p.meta&&p.meta.name?p.meta.name:p.path.split('/').pop()}}</li>
-    </ul>
     <div style="overflow: auto;">
       <router-view />
     </div>
@@ -27,14 +40,19 @@
 import { LOGIN_OUT } from '@/store/types'
 import { LOGIN_ROUTER } from '@/router'
 import { mapActions } from 'vuex'
+import clickoutside from '@/../frameworks/hView/directives/clickoutside'
 export default {
   name: 'App',
   data () {
     return {
       skin: 'blue',
       show: false,
+      show2: false,
       loginRouter: LOGIN_ROUTER
     }
+  },
+  directives: {
+    clickoutside
   },
   methods: {
     ...mapActions([LOGIN_OUT]),
@@ -51,6 +69,9 @@ export default {
           this.$router.push(LOGIN_ROUTER)
         }
       })
+    },
+    toggleDropdownMenu () {
+      this.show2 = false
     }
   }
 }
@@ -58,19 +79,13 @@ export default {
 
 <style lang="scss">
 .navbar-brand {
-  @include skin(c, var(--orange) var(--purple));
+  @include skin(c, var(--white) var(--orange));
 }
 #asider-nav {
   z-index: $zindex-tooltip;
 }
 .app-wrap {
   display: grid;
-  grid-template: auto auto minmax(500px, 1fr) / auto minmax(700px, 1fr);
-  > nav {
-    grid-column: 1/-1;
-  }
-  > #asider-nav {
-    grid-row: 2/-1;
-  }
+  grid-template-rows: auto 1fr;
 }
 </style>
