@@ -10,6 +10,7 @@ const Dir = {
 
 // 懒加载方式引入组件
 const HelloWorld = () => import('@/components/HelloWorld')
+const App = () => import('@/App')
 const Youke = () => import('@/components/Youke')
 const Logined = () => import('@/components/Logined')
 const Admin = () => import('@/components/Admin')
@@ -35,68 +36,74 @@ const router = new Router({
       }
     },
     {
-      path: DEFAULT_ROUTER,
-      component: Youke,
-      meta: {
-        icon: 'ic-rest text-success',
-        name: '游客'
-      }
-    },
-    {
-      path: '/Logined',
-      component: Logined,
-      meta: {
-        icon: 'ic-computer text-warning',
-        badge: {
-          state: 'icons',
-          theme: 'success'
-        },
-        loginCheck: inf => !!inf
-      }
-    },
-    {
-      path: '/Admin',
-      component: Admin,
-      meta: {
-        icon: 'ic-sitting text-primary',
-        loginCheck: inf => !!inf
-      }
-    }, {
-      path: '/UiKit',
-      redirect: '/UiKit/Buttons',
-      component: Dir,
-      meta: {
-        badge: {
-          state: 'icons',
-          theme: 'success'
-        },
-        icon: 'ic-favor'
-      },
+      path: '/',
+      redirect: 'DEFAULT_ROUTER',
+      component: App,
       children: [{
-        path: 'Buttons',
-        component: Buttons
+        path: DEFAULT_ROUTER,
+        component: Youke,
+        meta: {
+          icon: 'ic-rest text-success',
+          name: '游客'
+        }
+      },
+      {
+        path: '/Logined',
+        component: Logined,
+        meta: {
+          icon: 'ic-computer text-warning',
+          badge: {
+            state: 'icons',
+            theme: 'success'
+          },
+          loginCheck: inf => !!inf
+        }
+      },
+      {
+        path: '/Admin',
+        component: Admin,
+        meta: {
+          icon: 'ic-sitting text-primary',
+          loginCheck: inf => !!inf
+        }
       }, {
-        path: 'Icons',
-        component: Icons,
+        path: '/UiKit',
+        redirect: '/UiKit/Buttons',
+        component: Dir,
         meta: {
           badge: {
             state: 'icons',
-            theme: 'primary'
-          }
-        }
-      }, {
-        path: 'Table',
-        redirect: 'Table/TableStatic',
-        component: Dir,
+            theme: 'success'
+          },
+          icon: 'ic-favor'
+        },
         children: [{
-          path: 'TableStatic',
-          component: TableStatic
+          path: 'Buttons',
+          component: Buttons
         }, {
-          path: 'DataTable',
-          component: DataTable
+          path: 'Icons',
+          component: Icons,
+          meta: {
+            badge: {
+              state: 'icons',
+              theme: 'primary'
+            }
+          }
+        }, {
+          path: 'Table',
+          redirect: 'Table/TableStatic',
+          component: Dir,
+          children: [{
+            path: 'TableStatic',
+            component: TableStatic
+          }, {
+            path: 'DataTable',
+            component: DataTable
+          }]
         }]
       }]
-    }, {
+    },
+    {
       path: '/*',
       redirect: DEFAULT_ROUTER
     }

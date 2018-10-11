@@ -1,6 +1,6 @@
 <template>
 	<div class="asider-style position-relative h-100 text-light pb-4" :class="{mini}">
-		<hh-ul v-clickoutside="clearInterest" ref="asider" :leftLevel="mini?0:leftLevel" :look="look" :ul="$router.options.routes.filter(item=>item.component&&item.meta.tag!='login')"></hh-ul>
+		<hh-ul v-clickoutside="clearInterest" ref="asider" :leftLevel="mini?0:leftLevel" :look="look" :ul="$router.options.routes[1].children.filter(item=>item.component&&item.meta.tag!='login')"></hh-ul>
     <div @click="mini=!mini" class="asider-mini d-none position-absolute py-3 pr-3" style="left:100%;top:50%;cursor:pointer">
       <span class="px-1 py-2 rounded-right bg-dark"><i class="ic" :class="[mini?'ic-right':'ic-left']"></i></span>
     </div>

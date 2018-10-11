@@ -3,7 +3,6 @@ import router from './router'
 import store from './store'
 import hView from '../frameworks/hView'
 import {SET_USER_INF} from './store/types'
-import App from './App'
 
 import './styles/index.scss'
 
@@ -20,6 +19,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: { App: { template: '<router-view />' } },
   template: '<App/>'
 })

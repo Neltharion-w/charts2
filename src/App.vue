@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand">
       <a href="#" class="navbar-brand">
         <img src="./assets/logo.png" style="height:2rem" class="align-top" alt="logo">
-        template-mini
+        优秀图表收集
       </a>
       <div class="navbar-collapse justify-content-end">
         <nav class="nav justify-content-center">
@@ -15,7 +15,7 @@
     </nav>
     <h-asider id="asider-nav" :leftLevel="1"></h-asider>
     <ul class="breadcrumb mb-0 rounded-0 bg-dark text-light">
-      <li v-for="p in $route.matched" :key="p.path" class="breadcrumb-item">{{p.meta&&p.meta.name?p.meta.name:p.path.split('/').pop()}}</li>
+      <li v-for="p in $route.matched.slice(1)" :key="p.path" class="breadcrumb-item">{{p.meta&&p.meta.name?p.meta.name:p.path.split('/').pop()}}</li>
     </ul>
     <div style="overflow: auto;">
       <router-view />
