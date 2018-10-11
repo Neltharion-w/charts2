@@ -6,21 +6,18 @@
         优秀图表收集
       </a>
       <div class="order-md-1">
-        <button class="btn btn-sm btn-outline-success" @click="tabskin">换肤</button>
-        <button class="btn btn-sm btn-outline-primary ml-1" v-if="$store.state.userInf" @click="toLoginOut">退出</button>
-        <router-link class="btn btn-sm btn-outline-primary ml-1" v-else :to="loginRouter">登录</router-link>
+        <button class="btn btn-sm btn-outline-primary" @click="tabskin">换肤</button>
+        <button class="btn btn-sm btn-outline-success ml-1" v-if="$store.state.userInf" @click="toLoginOut">退出</button>
+        <router-link class="btn btn-sm btn-outline-success ml-1" v-else :to="loginRouter">登录</router-link>
         <button @click="show=!show" class="navbar-toggler navbar-toggler-icon ml-1" type="button"></button>
       </div>
       <div class="collapse navbar-collapse" :class="{show}">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <router-link class="nav-link" to="/Youke">Youke</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <router-link class="nav-link" to="/Logined">Explore</router-link>
           </li>
           <h-nav-dropdown desc="Dropdown link">
               <a class="dropdown-item" href="#">Action</a>

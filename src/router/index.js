@@ -3,33 +3,23 @@ import Router from 'vue-router'
 import store from '../store'
 import { DEAL_LOAD_NUM, SET_CRT } from '../store/types'
 
-// 目录组件
-const Dir = {
-  template: '<router-view />'
-}
-
 // 懒加载方式引入组件
-const HelloWorld = () => import('@/components/HelloWorld')
+const Login = () => import('@/components/Login')
 const App = () => import('@/App')
 const Youke = () => import('@/components/Youke')
 const Logined = () => import('@/components/Logined')
-const Admin = () => import('@/components/Admin')
-const Buttons = () => import('@/components/uiKit/buttons.vue')
-const Icons = () => import('@/components/uiKit/icons.vue')
-const TableStatic = () => import('@/components/uiKit/table/tableStatic.vue')
-const DataTable = () => import('@/components/uiKit/table/dataTable.vue')
 
 Vue.use(Router)
 
 // 设置登陆页、首页路由名称
-export const LOGIN_ROUTER = '/HelloWorld'
+export const LOGIN_ROUTER = '/Login'
 export const DEFAULT_ROUTER = '/Youke'
 
 const router = new Router({
   routes: [
     {
       path: LOGIN_ROUTER,
-      component: HelloWorld,
+      component: Login,
       meta: {
         loginCheck: inf => !inf,
         tag: 'login'
@@ -41,66 +31,14 @@ const router = new Router({
       component: App,
       children: [{
         path: DEFAULT_ROUTER,
-        component: Youke,
-        meta: {
-          icon: 'ic-rest text-success',
-          name: '游客'
-        }
+        component: Youke
       },
       {
         path: '/Logined',
         component: Logined,
         meta: {
-          icon: 'ic-computer text-warning',
-          badge: {
-            state: 'icons',
-            theme: 'success'
-          },
           loginCheck: inf => !!inf
         }
-      },
-      {
-        path: '/Admin',
-        component: Admin,
-        meta: {
-          icon: 'ic-sitting text-primary',
-          loginCheck: inf => !!inf
-        }
-      }, {
-        path: '/UiKit',
-        redirect: '/UiKit/Buttons',
-        component: Dir,
-        meta: {
-          badge: {
-            state: 'icons',
-            theme: 'success'
-          },
-          icon: 'ic-favor'
-        },
-        children: [{
-          path: 'Buttons',
-          component: Buttons
-        }, {
-          path: 'Icons',
-          component: Icons,
-          meta: {
-            badge: {
-              state: 'icons',
-              theme: 'primary'
-            }
-          }
-        }, {
-          path: 'Table',
-          redirect: 'Table/TableStatic',
-          component: Dir,
-          children: [{
-            path: 'TableStatic',
-            component: TableStatic
-          }, {
-            path: 'DataTable',
-            component: DataTable
-          }]
-        }]
       }]
     },
     {
