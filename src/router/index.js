@@ -4,8 +4,8 @@ import store from '../store'
 import { DEAL_LOAD_NUM, SET_CRT } from '../store/types'
 
 // 懒加载方式引入组件
-const Login = () => import('@/components/Login')
 const App = () => import('@/App')
+const Login = () => import('@/components/Login')
 const Youke = () => import('@/components/Youke')
 const Logined = () => import('@/components/Logined')
 
