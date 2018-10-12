@@ -4,9 +4,9 @@ import store from '../store'
 import { DEAL_LOAD_NUM, SET_CRT } from '../store/types'
 
 // 懒加载方式引入组件
-const Login = () => import('@/components/Login')
-const Describe = () => import('@/components/Describe')
-const Explore = () => import('@/components/Explore')
+const Login = () => import('@/pages/Login')
+const Describe = () => import('@/pages/Describe')
+const Explore = () => import('@/pages/Explore')
 
 Vue.use(Router)
 
