@@ -13,10 +13,10 @@
       <div class="collapse navbar-collapse" :class="{show}">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link class="nav-link" to="/Youke">Youke</router-link>
+            <router-link class="nav-link" to="/Describe">Describe</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/Logined">Explore</router-link>
+            <router-link class="nav-link" to="/Explore">Explore</router-link>
           </li>
           <h-nav-dropdown desc="Dropdown link">
               <a class="dropdown-item" href="#">Action</a>

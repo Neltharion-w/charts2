@@ -2,7 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3 text-center">
-        <img class="mb-4" src="../assets/logo.png" alt="Logo" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <input v-model="token" class="form-control" placeholder="Git Personal Token">
         <div v-if="$route.query.redirect">You will goto <span class="text-warning">{{$route.query.redirect}}</span></div>
@@ -21,7 +20,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      token: '14bcfc906120cd4afff8d905a6850740822ad135378',
+      token: '14bcfc906120cd4afff8d905a6850740822ad135',
       msg: 'Your May Press Login(Btn)'
     }
   },

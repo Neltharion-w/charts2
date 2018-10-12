@@ -4,16 +4,15 @@ import store from '../store'
 import { DEAL_LOAD_NUM, SET_CRT } from '../store/types'
 
 // 懒加载方式引入组件
-const App = () => import('@/App')
 const Login = () => import('@/components/Login')
-const Youke = () => import('@/components/Youke')
-const Logined = () => import('@/components/Logined')
+const Describe = () => import('@/components/Describe')
+const Explore = () => import('@/components/Explore')
 
 Vue.use(Router)
 
 // 设置登陆页、首页路由名称
 export const LOGIN_ROUTER = '/Login'
-export const DEFAULT_ROUTER = '/Youke'
+export const DEFAULT_ROUTER = '/Describe'
 
 const router = new Router({
   routes: [
@@ -26,20 +25,15 @@ const router = new Router({
       }
     },
     {
-      path: '/',
-      redirect: 'DEFAULT_ROUTER',
-      component: App,
-      children: [{
-        path: DEFAULT_ROUTER,
-        component: Youke
-      },
-      {
-        path: '/Logined',
-        component: Logined,
-        meta: {
-          loginCheck: inf => !!inf
-        }
-      }]
+      path: DEFAULT_ROUTER,
+      component: Describe
+    },
+    {
+      path: '/Explore',
+      component: Explore,
+      meta: {
+        loginCheck: inf => !!inf
+      }
     },
     {
       path: '/*',
