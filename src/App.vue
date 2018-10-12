@@ -12,17 +12,15 @@
       </div>
       <div class="collapse navbar-collapse" :class="{show}">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/Describe">Describe</router-link>
+          <!-- 该v-for适用于第一层单层路由 -->
+          <li v-for="r in $router.options.routes.filter(r => !r.meta||!r.meta.hide)" :key="r.path" class="nav-item">
+            <router-link class="nav-link" :to="r.path">{{r.path.slice(1)}}</router-link>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/Explore">Explore</router-link>
-          </li>
-          <h-nav-dropdown desc="Dropdown link">
+          <!-- <h-nav-dropdown desc="Dropdown link">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
-          </h-nav-dropdown>
+          </h-nav-dropdown> -->
         </ul>
       </div>
     </nav>
@@ -79,8 +77,8 @@ export default {
   font-size: 1.5rem;
   @include skin(
     bgi,
-    linear-gradient(110deg, var(--red), var(--indigo))
-      linear-gradient(110deg, var(--yellow), var(--red))
+    linear-gradient(110deg, var(--yellow), var(--red))
+      linear-gradient(110deg, var(--red), var(--indigo))
   );
   -webkit-background-clip: text;
   color: transparent;
@@ -92,7 +90,7 @@ export default {
 .app-wrap {
   display: grid;
   grid-template-rows: auto 1fr;
-  > .navbar{
+  > .navbar {
     padding-bottom: 1px;
     position: relative;
     &::after {

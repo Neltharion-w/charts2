@@ -7,6 +7,7 @@ import { DEAL_LOAD_NUM, SET_CRT } from '../store/types'
 const Login = () => import('@/pages/Login')
 const Describe = () => import('@/pages/Describe')
 const Explore = () => import('@/pages/Explore')
+const Charts = () => import('@/pages/Charts')
 
 Vue.use(Router)
 
@@ -21,12 +22,16 @@ const router = new Router({
       component: Login,
       meta: {
         loginCheck: inf => !inf,
-        tag: 'login'
+        hide: true
       }
     },
     {
       path: DEFAULT_ROUTER,
       component: Describe
+    },
+    {
+      path: '/Charts',
+      component: Charts
     },
     {
       path: '/Explore',
@@ -37,7 +42,10 @@ const router = new Router({
     },
     {
       path: '/*',
-      redirect: DEFAULT_ROUTER
+      redirect: DEFAULT_ROUTER,
+      meta: {
+        hide: true
+      }
     }
   ],
   linkActiveClass: 'active'
