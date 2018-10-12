@@ -1,142 +1,35 @@
 <template>
-    <div>
-        <h3 class="text-primary text-center">游客可进页面</h3>
-        <div @click="changeOption" style="height:300px">
-          <h-echarts :option="option"></h-echarts>
-        </div>
+    <div class="h-100 bg-dark youke" style="overflow:auto">
+      <div class="pro-desc">
+        该项目收集表现力强、交互性优的图表，所有素材来源于当前主流图表库(ECharts,Hcharts,阿里的G2/G6等)。
+        领导要求前端推动UI设计，便于设计者在设计网页时，可快速浏览及选择合适的图表。
+        由于前端人员审美等主观因素限制，在图表的选择上，难免存在令人不满意的地方，希望有建议和意见的用户帮助我们进步。
+      </div>
     </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      option: {
-        title: {
-          text: '对数轴示例',
-          x: 'center'
-        },
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c}'
-        },
-        legend: {
-          x: 'left',
-          data: ['2的指数', '3的指数']
-        },
-        xAxis: [
-          {
-            type: 'category',
-            name: 'x',
-            splitLine: { show: false },
-            data: ['一', '二', '三', '四', '五', '六', '七', '八', '九']
-          }
-        ],
-        yAxis: [
-          {
-            type: 'log',
-            name: 'y'
-          }
-        ],
-        toolbox: {
-          show: true,
-          feature: {
-            mark: {
-              show: true
-            },
-            dataView: {
-              show: true,
-              readOnly: true
-            },
-            restore: {
-              show: true
-            },
-            saveAsImage: {
-              show: true
-            }
-          }
-        },
-        calculable: true,
-        series: [
-          {
-            name: '3的指数',
-            type: 'line',
-            data: [1, 3, 9, 27, 81, 247, 741, 2223, 6669]
-          },
-          {
-            name: '2的指数',
-            type: 'line',
-            data: [1, 2, 4, 8, 16, 32, 64, 128, 256]
-          }
-        ]
-      }
-    }
-  },
-  methods: {
-    changeOption () {
-      this.option = {
-        title: {
-          text: '对数轴示例',
-          x: 'center'
-        },
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c}'
-        },
-        legend: {
-          x: 'left',
-          data: ['2的指数', '3的指数']
-        },
-        xAxis: [
-          {
-            type: 'category',
-            name: 'x',
-            splitLine: { show: false },
-            data: ['一', '二', '三', '四', '五', '六', '七', '八', '九']
-          }
-        ],
-        yAxis: [
-          {
-            type: 'log',
-            name: 'y'
-          }
-        ],
-        toolbox: {
-          show: true,
-          feature: {
-            mark: {
-              show: true
-            },
-            dataView: {
-              show: true,
-              readOnly: true
-            },
-            restore: {
-              show: true
-            },
-            saveAsImage: {
-              show: true
-            }
-          }
-        },
-        calculable: true,
-        series: [
-          {
-            name: '3的指数',
-            type: 'line',
-            data: [1, 3, 9, 27, 81, 47, 71, 223, 669]
-          },
-          {
-            name: '2的指数',
-            type: 'line',
-            data: [1, 2, 4, 8, 16, 32, 64, 128, 256]
-          }
-        ]
-      }
-    }
+<style lang="scss">
+.youke {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1rem 1fr 1rem;
+  @include media-breakpoint-up(md) {
+    grid-template-columns: 2rem 1fr 2rem;
   }
 }
-</script>
-
-<style lang="scss">
+.pro-desc {
+  grid-column-start: 2;
+  font-family: "SF Pro SC", "SF Pro Display", "SF Pro Icons", "PingFang SC",
+    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-background-clip: text;
+  background-image: url(../assets/copy_texture_7_large.jpg);
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  color: transparent;
+  font-size: 2rem;
+  @include media-breakpoint-up(md) {
+    font-size: 2.5rem;
+  }
+}
 </style>

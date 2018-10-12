@@ -45,7 +45,8 @@ const router = new Router({
       path: '/*',
       redirect: DEFAULT_ROUTER
     }
-  ]
+  ],
+  linkActiveClass: 'active'
 })
 router.beforeEach((to, from, next) => {
   const replace = from.path === LOGIN_ROUTER
