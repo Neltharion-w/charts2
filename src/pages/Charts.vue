@@ -62,7 +62,7 @@ export default {
           var _top = $(this).offset().top
           var _height = this.offsetHeight
           if (_top <= top && _top + _height >= top) {
-            console.log($(this).attr('id'));
+            console.log($(this).attr('id'))
             $(this).addClass('active')
           }
         })
