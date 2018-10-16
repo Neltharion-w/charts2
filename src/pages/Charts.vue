@@ -197,6 +197,7 @@ export default {
     margin-left: 10px;
   }
   .chart-scroll {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 0 $gap $gap;
     @include scroll($scrollbar-width, false, #6d47d9);
     background: url(../assets/topography.svg),
@@ -230,7 +231,9 @@ export default {
     }
     h5 {
       text-decoration: #162436;
-      color: var(--yellow);
+      font-weight: normal;
+      font-size: 1rem;
+      color: var(--white);
     }
     background-color: rgba(255, 255, 255, 0.2);
   }
