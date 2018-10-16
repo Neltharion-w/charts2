@@ -1,6 +1,6 @@
 <template>
   <div :class="[skin+'-skin h-100 app-wrap']">
-    <nav class="navbar py-0 navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <router-link class="navbar-brand" :to="defaultRouter">
         <i class="logo-icon iconfont cool-chart-scatterplot-hexbin font-weight-bold"></i>
       </router-link>
@@ -99,7 +99,6 @@ export default {
   display: grid;
   grid-template-rows: auto 1fr;
   > .navbar {
-    padding-bottom: 1px;
     position: relative;
     &::after {
       display: block;
