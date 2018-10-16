@@ -32,7 +32,8 @@ export default {
       this.$emit("in", null);
     },
     jump(attr) {
-      $("[" + this.listen + "=" + attr + "]")[0].scrollIntoView();
+      const el = $("[" + this.listen + "=" + attr + "]")[0];
+      if (el) el.scrollIntoView();
     }
   }
 };
