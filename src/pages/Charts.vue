@@ -10,7 +10,7 @@
       </aside>
       <h-scroll-listen class="chart-scroll" ref="scroll" @in="m=>{mao=m}">
         <div>
-          <div board="zx" class="chart-list mao">
+          <div board="zx" class="mao">
             <h3>折线图<span>Line</span></h3>
             <div class="pics">
               <div class="pic p-2">
@@ -214,9 +214,6 @@ export default {
       margin: 0;
       padding: 2/3 * $gap 0;
     }
-  }
-  .chart-list{
-    // margin: 2/3 * $gap 0;
   }
   .pics {
     color: var(--white);
