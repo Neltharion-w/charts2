@@ -8,6 +8,7 @@ const Login = () => import('@/pages/Login')
 const Describe = () => import('@/pages/Describe')
 const Explore = () => import('@/pages/Explore')
 const Charts = () => import('@/pages/Charts')
+const Cdemo = () => import('@/demo/Cdemo')
 
 Vue.use(Router)
 
@@ -27,11 +28,21 @@ const router = new Router({
     },
     {
       path: DEFAULT_ROUTER,
+      title: '介绍',
       component: Describe
     },
     {
       path: '/Charts',
+      title: '实例',
       component: Charts
+    },
+    {
+      path: '/Cdemo',
+      component: Cdemo,
+      name: 'Cdemo',
+      meta: {
+        hide: true
+      }
     },
     {
       path: '/Explore',

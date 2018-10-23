@@ -14,7 +14,7 @@
         <ul class="navbar-nav">
           <!-- 该v-for适用于第一层单层路由 -->
           <li v-for="r in $router.options.routes.filter(r => !r.meta||!r.meta.hide)" :key="r.path" class="nav-item">
-            <router-link class="nav-link" :to="r.path">{{r.path.slice(1)}}</router-link>
+            <router-link class="nav-link" :to="r.path">{{r.title}}</router-link>
           </li>
           <!-- <h-nav-dropdown desc="Dropdown link">
               <a class="dropdown-item" href="#">Action</a>
